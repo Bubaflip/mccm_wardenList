@@ -1,0 +1,36 @@
+:root {
+  --cream: #d6d1c6;
+  cursor: url("../assets/CelCursorTight.png"), auto;
+}
+
+@font-face {
+  font-family: 'CelmatesThin';
+  src: url('../public/CelmatesThin.otf');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CelmatesRegular';
+  src: url('../public/CelmatesRegular.otf');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CelmatesItalic';
+  src: url('../public/CelmatesItalic.otf');
+  font-style: italic;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'CelmatesThin';
+  color: black;
+  width: 100%;
+  background: var(--cream);
+}

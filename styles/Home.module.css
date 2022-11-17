@@ -1,0 +1,84 @@
+.pageContainer {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative;
+}
+
+.connectedAddressButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border-width: 0;
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    padding-right: 1.5%;
+    cursor: url("../assets/CelCursor.png"), auto;
+    z-index: 3;
+}
+
+.connectedAddress {
+    background-color: rgba(0, 0, 0, 0.85);
+    color: var(--cream);
+    padding: 0.75em;
+    border-radius: 7.5px;
+    font-size: 1em;
+}
+
+
+.connecting {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.connectionStatus {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    color: var(--cream);
+}
+
+.messageContainer {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.listMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--cream);
+    font-size: 1.5em;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 1em;
+    border-radius: 7.5px;
+}
+
+.connectYourWallet {
+    font-family: 'CelmatesItalic';
+    color: black;
+    background-color: var(--cream);
+    padding: 0.5em;
+    border: solid black 3px;
+    border-radius: 7.5px;
+    cursor: url("../assets/CelCursor.png"), auto;
+}

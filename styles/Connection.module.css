@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.frontImage {
+  width: 20%;
+  min-width: 350px;
+  max-width: 800px;
+  border-top-left-radius: 7.5px;
+  border-top-right-radius: 7.5px;
+  z-index: 1;
+}
+
+.connectButton {
+  box-sizing: border-box;
+  background-color: black;
+  cursor: pointer;
+  color: var(--cream);
+  width: 20%;
+  min-width: 350px;
+  max-width: 800px;
+  height: 60px;
+  font-family: 'CelMatesThin';
+  text-transform: uppercase;
+  font-size: 1em;
+  padding: .75rem 1.2rem;
+  text-align: center;
+  border-bottom-left-radius: 7.5px;
+  border-bottom-right-radius: 7.5px;
+  border-width: 0;
+  cursor: url("../assets/CelCursor.png"), auto;
+  z-index: 1;
+}
+
+.connectButton:hover {
+  background-color: var(--cream);
+  color: black;
+}
