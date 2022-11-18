@@ -23,7 +23,7 @@ const Transaction = ({ children }) => {
     onError(error) {
       console.log("Error Switch Network", error);
     },
-    chainId: 5,
+    chainId: 1,
   });
   const [signature, setSignature] = useState(null);
 
