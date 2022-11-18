@@ -32,7 +32,7 @@ const Transaction = ({ children }) => {
     const { data, error } = useSWR('/api/staticdata?input=' + address, fetcher);
 
     const checkAddress = () => {
-      if (list[address] == null || list[address] == undefined) {
+      if (list[address.toLowerCase()] == null || list[address.toLowerCase()] == undefined) {
         setWhitelisted(0)
       } else {
         setWhitelisted(1);
