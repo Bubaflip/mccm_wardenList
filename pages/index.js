@@ -10,12 +10,6 @@ export default function Home() {
   const { isConnected, isConnecting, isReconnecting, isDisconnected } =
     useAccount();
   const transactionProvider = useContext(TransactionProvider);
-  const { data } = useSigner();
-
-  useEffect(() => {
-    if (!data) return;
-    transactionProvider.wallet.setSigner(data);
-  }, [data]);
 
   // return the page content depending on account status
   const returnContent = () => {
@@ -26,7 +20,7 @@ export default function Home() {
       );
     }
 
-    if (!transactionProvider.wallet.signature) {
+    if (!transactionProvider.wallet.sigData) {
       return (
         <div className={styles.messageContainer}>
           <p className={styles.listMessage}>
