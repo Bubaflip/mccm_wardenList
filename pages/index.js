@@ -30,8 +30,7 @@ export default function Home() {
       return (
         <div className={styles.messageContainer}>
           <p className={styles.listMessage}>
-            The Warden has no record for your crimes. Officer Pastos will see
-            you another time.
+            The Warden has no record for your crimes. Officer Pastos will see you another time.
           </p>
         </div>
       );

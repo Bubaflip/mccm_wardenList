@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   const { chains, provider, webSocketProvider } = configureChains(
-    [chain.goerli],
+    [chain.mainnet],
     [
       infuraProvider({ apiKey: process.env.INFURA_KEY, priority: 1 }),
       alchemyProvider({ apiKey: process.env.ALCHEMY_KEY, priority: 0 }),
