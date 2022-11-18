@@ -19,12 +19,12 @@ const Connection = () => {
                     src='./logo_animated.gif'
                 />
                 <p>IN MAINTENANCE... GONE FOR A RICARD</p>
-                <button
+                {/* <button
                     className={styles.connectButton}
                     onClick={handleConnectButtonClick}
                 >
                     Check Warden List
-                </button>
+                </button> */}
                 {openPopup ? <Popup
                     onClose={() => {
                         setOpenPopup(false);

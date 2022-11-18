@@ -77,7 +77,6 @@ const Transaction = ({ children }) => {
                 {children}
             </TransactionProvider.Provider>
         </>
-
     );
 }
 
