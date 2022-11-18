@@ -4350,8 +4350,7 @@ let whitelistArr = [
 let obj = {};
 
 for (var i = 0; i< whitelistArr.length; i++) {
-    obj[whitelistArr[i]] = {};
-    obj[whitelistArr[i]]["sig"] = "whitelisted";
+    obj[whitelistArr[i]] = "whitelisted";
 }
 
 var dictstring = JSON.stringify(obj);

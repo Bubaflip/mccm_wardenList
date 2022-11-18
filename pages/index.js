@@ -20,11 +20,13 @@ export default function Home() {
       );
     }
 
-    if (!transactionProvider.wallet.sigData) {
+    // if (!transactionProvider.wallet.sigData) {
+    if (transactionProvider.wallet.whitelisted !== 0) {
       return (
         <div className={styles.messageContainer}>
           <p className={styles.listMessage}>
-            The Warden has no record for your crimes. Officer Pastos will see you another time.
+            Looks like we have a potential offender on our hands. Ricardo Pastos will see about that on the 21st of November.
+
           </p>
         </div>
       );
@@ -32,7 +34,7 @@ export default function Home() {
       return (
         <div className={styles.messageContainer}>
           <p className={styles.listMessage}>
-            Looks like we have a potential offender on our hands. Ricardo Pastos will see about that on the 21st of November.
+            The Warden has no record for your crimes. Officer Pastos will see you another time.
           </p>
         </div>
       );

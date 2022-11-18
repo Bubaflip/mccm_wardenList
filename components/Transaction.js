@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAccount, useProvider, useConnect, useSwitchNetwork, useNetwork, useDisconnect } from 'wagmi';
 import { ethers } from "ethers";
 import useSWR from 'swr';
+import list from "../public/whitelisted.json"
 
 export const TransactionProvider = new React.createContext();
 
@@ -14,6 +15,7 @@ const Transaction = ({ children }) => {
     const [signer, setSigner] = useState(null);
     const { connect, connectors } = useConnect();
     const { chain } = useNetwork();
+    const [whitelisted, setWhitelisted] = useState(0);
     const { switchNetwork, status } = useSwitchNetwork({
         onError(error) {
             console.log('Error Switch Network', error)
@@ -28,6 +30,14 @@ const Transaction = ({ children }) => {
     ).then((res) => res.json());
 
     const { data, error } = useSWR('/api/staticdata?input=' + address, fetcher);
+
+    const checkAddress = () => {
+      if (list[address] == null || list[address] == undefined) {
+        setWhitelisted(0)
+      } else {
+        setWhitelisted(1);
+      }
+    }
 
     // set up signer 
     const setUpSigner = () => {
@@ -44,6 +54,7 @@ const Transaction = ({ children }) => {
         if (chain && chain.id !== 1 && switchingChain === false && switchNetwork) {
             switchingChain = true;
             switchNetwork(1);
+            checkAddress();
         }
     }, [switchNetwork, status]);
 
@@ -54,6 +65,7 @@ const Transaction = ({ children }) => {
             switchingChain = false;
         } else if (chain && !signer && chain.id === 1) {
             setUpSigner();
+            checkAddress();
         }
     }, [chain, signer]);
 
@@ -71,6 +83,7 @@ const Transaction = ({ children }) => {
                         chain: chain,
                         sigData: data,
                         disconnect: disconnect,
+                        whitelisted: whitelisted,
                     },
                 }}
             >
