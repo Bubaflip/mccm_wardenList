@@ -60,7 +60,7 @@ const Transaction = ({ children }) => {
   useEffect(() => {
     if (chain && chain.id !== 5 && switchingChain === false && switchNetwork) {
       switchingChain = true;
-      switchNetwork(5);
+      switchNetwork(1);
     }
   }, [switchNetwork, status]);
 
