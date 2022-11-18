@@ -21,7 +21,7 @@ export default function Home() {
     }
 
     // if (!transactionProvider.wallet.sigData) {
-    if (transactionProvider.wallet.whitelisted !== 0) {
+    if (transactionProvider.wallet.sigData) {
       return (
         <div className={styles.messageContainer}>
           <p className={styles.listMessage}>

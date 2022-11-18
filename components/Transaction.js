@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAccount, useProvider, useConnect, useSwitchNetwork, useNetwork, useDisconnect } from 'wagmi';
 import { ethers } from "ethers";
 import useSWR from 'swr';
-import list from "../public/whitelisted.json"
+import CryptoJS from "crypto-js";
 
 export const TransactionProvider = new React.createContext();
 
@@ -13,6 +13,7 @@ const Transaction = ({ children }) => {
   const { address, isConnected } = useAccount();
   const provider = useProvider();
   const [signer, setSigner] = useState(null);
+  const [signature, setSignature] = useState(null);
   const { connect, connectors } = useConnect();
   const { chain } = useNetwork();
   const [whitelisted, setWhitelisted] = useState(0);
@@ -25,26 +26,46 @@ const Transaction = ({ children }) => {
   const { disconnect } = useDisconnect();
 
   // fetch signature
-  const fetcher = (url, triedKey) => fetch(url,
-    triedKey
-  ).then((res) => res.json());
+  // const fetcher = (url, triedKey) => fetch(url,
+  //   triedKey
+  // ).then((res) => res.json());
 
-  const { data, error } = useSWR('/api/staticdata?input=' + address, fetcher);
-
-  const checkAddress = () => {
-    console.log(address.toLowerCase());
-    // const reducedList = Object.keys(list).reduce((total, key) => {
-    //   return {
-    //     ...total,
-    //     [key.toLowerCase()]: list[key],
-    //   }
-    // }, {});
-    if (list[address.toLowerCase()] === null || list[address.toLowerCase()] === undefined) {
-      setWhitelisted(0)
+  // fetch signature
+  const fetchSig = async () => {
+    const fileName = CryptoJS.SHA256(address.toLowerCase()).toString();
+    const res = await fetch(`/wardenList/${fileName}`, {
+      headers: {
+        "Content-Type": "text/plain",
+      },
+    });
+    if (res.status === 200) {
+      const content = await res.text();
+      const sig = CryptoJS.AES.decrypt(content, address.toLowerCase()).toString(
+        CryptoJS.enc.Utf8
+      );
+      setSignature(sig);
     } else {
-      setWhitelisted(1);
+      console.log("not found");
+      setSignature(null);
     }
-  }
+  };
+
+  // const { data, error } = useSWR('/api/staticdata?input=' + address, fetcher);
+
+  // const checkAddress = () => {
+  //   console.log(address.toLowerCase());
+  //   // const reducedList = Object.keys(list).reduce((total, key) => {
+  //   //   return {
+  //   //     ...total,
+  //   //     [key.toLowerCase()]: list[key],
+  //   //   }
+  //   // }, {});
+  //   if (list[address.toLowerCase()] === null || list[address.toLowerCase()] === undefined) {
+  //     setWhitelisted(0)
+  //   } else {
+  //     setWhitelisted(1);
+  //   }
+  // }
 
   // set up signer 
   const setUpSigner = () => {
@@ -61,7 +82,7 @@ const Transaction = ({ children }) => {
     if (chain && chain.id !== 1 && switchingChain === false && switchNetwork) {
       switchingChain = true;
       switchNetwork(1);
-      checkAddress();
+      // checkAddress();
     }
   }, [switchNetwork, status]);
 
@@ -72,9 +93,21 @@ const Transaction = ({ children }) => {
       switchingChain = false;
     } else if (chain && !signer && chain.id === 1) {
       setUpSigner();
-      checkAddress();
+      // checkAddress();
     }
   }, [chain, signer]);
+
+  // fetch sig on address change
+  useEffect(() => {
+    const fetchOnLoad = async () => {
+      if (address) {
+        console.log(address);
+        await fetchSig();
+      }
+    };
+    fetchOnLoad();
+  }, [address]);
+
 
   return (
     <>
@@ -88,7 +121,7 @@ const Transaction = ({ children }) => {
             connectors: connectors,
             switchNetwork: switchNetwork,
             chain: chain,
-            sigData: data,
+            sigData: signature,
             disconnect: disconnect,
             whitelisted: whitelisted,
           },
