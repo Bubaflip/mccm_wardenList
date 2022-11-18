@@ -58,7 +58,7 @@ const Transaction = ({ children }) => {
 
   // ask to switch chain if wrong chain and status changes
   useEffect(() => {
-    if (chain && chain.id !== 5 && switchingChain === false && switchNetwork) {
+    if (chain && chain.id !== 1 && switchingChain === false && switchNetwork) {
       switchingChain = true;
       switchNetwork(1);
     }
