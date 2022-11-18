@@ -26,7 +26,6 @@ export default function Home() {
         <div className={styles.messageContainer}>
           <p className={styles.listMessage}>
             Looks like we have a potential offender on our hands. Ricardo Pastos will see about that on the 21st of November.
-
           </p>
         </div>
       );
