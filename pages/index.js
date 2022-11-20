@@ -34,7 +34,7 @@ export default function Home() {
       return (
         <div className={styles.messageContainer}>
           <p className={styles.listMessage}>
-            {`You are lucky the Warden was drunk and he thinks you show promise with your efforts. Officer Pastos will see you for our second phase of arrest on the 21st of November at 4pm EST.`}
+            {`You are lucky the Warden was drunk and he thinks you show promise with your efforts. Officer Pastos will see you for our second phase of arrest on the 21st of November at 12pm EST.`}
           </p>
         </div>
       );
