@@ -101,7 +101,6 @@ const Transaction = ({ children }) => {
   useEffect(() => {
     const fetchOnLoad = async () => {
       if (address) {
-        console.log(address);
         await fetchSig();
       }
     };

@@ -18,7 +18,6 @@ const Connection = () => {
                     className={styles.frontImage}
                     src='./logo_animated.gif'
                 />
-                {/* <p>IN MAINTENANCE... GONE FOR A RICARD</p> */}
                 <button
                     className={styles.connectButton}
                     onClick={handleConnectButtonClick}

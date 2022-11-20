@@ -21,19 +21,29 @@ export default function Home() {
     }
 
     // if (!transactionProvider.wallet.sigData) {
-    if (transactionProvider.wallet.sigData) {
+    if (transactionProvider.wallet.sigData === "whitelistWarden") {
       return (
         <div className={styles.messageContainer}>
           <p className={styles.listMessage}>
-            Looks like we have a potential offender on our hands. Ricardo Pastos will see about that on the 21st of November.
+            {`A true criminal. Warden has taken notice. Officer Pastos will see you for our first phase of arrests on the 21st of November at 12pm EST.`}
           </p>
         </div>
       );
-    } else {
+    }
+    if (transactionProvider.wallet.sigData === "whitelistDrunken") {
       return (
         <div className={styles.messageContainer}>
           <p className={styles.listMessage}>
-            The Warden has no record for your crimes. Officer Pastos will see you another time.
+            {`You are lucky the Warden was drunk and he thinks you show promise with your efforts. Officer Pastos will see you for our second phase of arrest on the 21st of November at 4pm EST.`}
+          </p>
+        </div>
+      );
+    }
+    else {
+      return (
+        <div className={styles.messageContainer}>
+          <p className={styles.listMessage}>
+            {`Warden has no records for your crime. Ricardo will see you on the 21st at 6pm EST. If he is still here...`}
           </p>
         </div>
       );
