@@ -22,7 +22,7 @@ const Connection = () => {
                     className={styles.connectButton}
                     onClick={handleConnectButtonClick}
                 >
-                    {`Check Ricardo's arrest leads`}
+                    {`Check Ricardo's leads`}
                 </button>
                 {openPopup ? <Popup
                     onClose={() => {
