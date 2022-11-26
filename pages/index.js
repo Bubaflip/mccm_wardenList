@@ -39,6 +39,15 @@ export default function Home() {
         </div>
       );
     }
+    if (transactionProvider.wallet.sigData === "arrested") {
+      return (
+        <div className={styles.messageContainer}>
+          <p className={styles.listMessage}>
+            {`Naughty naughty. Have you been on the Ricard? You're already in. Please report for Judgement when the time is right.`}
+          </p>
+        </div>
+      );
+    }
     else {
       return (
         <div className={styles.messageContainer}>
