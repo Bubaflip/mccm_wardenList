@@ -34,7 +34,7 @@ export default function Home() {
       return (
         <div className={styles.messageContainer}>
           <p className={styles.listMessage}>
-            {`Ricardo has got you down as a lead. Not his priority, but there is still a thin chance to get arrested on the 28th of November at 4pm EST. If he is still here...`}
+            {`Ricardo has got you down as a lead. Not his priority, but there is still a thin chance to get arrested on the 28th of November at 4:20pm EST. If he is still here...`}
           </p>
         </div>
       );
