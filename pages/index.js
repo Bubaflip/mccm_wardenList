@@ -21,20 +21,20 @@ export default function Home() {
     }
 
     // if (!transactionProvider.wallet.sigData) {
-    if (transactionProvider.wallet.sigData === "whitelistWarden") {
+    if (transactionProvider.wallet.sigData === "hotLead") {
       return (
         <div className={styles.messageContainer}>
           <p className={styles.listMessage}>
-            {`A true criminal. Warden has taken notice. Officer Pastos will see you for our first phase of arrests on the 21st of November at 12pm EST.`}
+            {`Ricardo's top lead. He will be looking out for you during his first wave of arrest on the 28th of November at 12pm EST. A guaranteed arrest.`}
           </p>
         </div>
       );
     }
-    if (transactionProvider.wallet.sigData === "whitelistDrunken") {
+    if (transactionProvider.wallet.sigData === "lead") {
       return (
         <div className={styles.messageContainer}>
           <p className={styles.listMessage}>
-            {`You are lucky the Warden was drunk and he thinks you show promise with your efforts. Officer Pastos will see you for our second phase of arrest on the 21st of November at 4pm EST.`}
+            {`Ricardo has got you down as a lead. Not his priority, but there is still a thin chance to get arrested on the 28th of November at 4pm EST. If he is still here...`}
           </p>
         </div>
       );
@@ -43,7 +43,7 @@ export default function Home() {
       return (
         <div className={styles.messageContainer}>
           <p className={styles.listMessage}>
-            {`Warden has no records for your crime. Ricardo will see you on the 21st at 6pm EST. If he is still here...`}
+            {`Ricardo was too drunk to get you down as a lead. Looks like your last chance to get into Steel Hose is travelling via the open sea.`}
           </p>
         </div>
       );
